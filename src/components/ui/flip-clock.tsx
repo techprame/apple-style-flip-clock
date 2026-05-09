@@ -8,7 +8,7 @@ import {
   memo,
   ReactNode,
   useEffect,
-  useState
+  useState,
 } from "react";
 
 const flipUnitVariants = cva(
@@ -19,21 +19,21 @@ const flipUnitVariants = cva(
         sm: "w-10 min-w-10 h-14 text-3xl", // Small (Compact UI)
         md: "w-14 min-w-14 h-20 text-5xl", // Medium (Standard sidebar/header)
         lg: "w-17 min-w-17 h-24 text-6xl", // Large (Focus/Hero)
-        xl: "w-22 min-w-22 h-32 text-8xl" // Extra Large (Dashboard/Landing)
+        xl: "w-22 min-w-22 h-32 text-8xl", // Extra Large (Dashboard/Landing)
       },
       variant: {
         default: "bg-primary text-primary-foreground",
         secondary: "bg-secondary text-secondary-foreground",
         destructive: "bg-destructive text-destructive-foreground",
         outline: "border border-input bg-background text-foreground",
-        muted: "bg-muted text-muted-foreground"
-      }
+        muted: "bg-muted text-muted-foreground",
+      },
     },
     defaultVariants: {
       size: "md",
-      variant: "default"
-    }
-  }
+      variant: "default",
+    },
+  },
 );
 
 interface FlipUnitProps
@@ -44,14 +44,14 @@ interface FlipUnitProps
 }
 
 const commonCardStyle = cn(
-  "absolute inset-x-0 overflow-hidden h-1/2 bg-inherit text-inherit"
+  "absolute inset-x-0 overflow-hidden h-1/2 bg-inherit text-inherit",
 );
 
 const FlipUnit: FC<FlipUnitProps> = memo(function FlipUnit({
   digit,
   size,
   variant,
-  className
+  className,
 }: FlipUnitProps) {
   const [prevDigit, setPrevDigit] = useState(digit);
   const [flipping, setFlipping] = useState(false);
@@ -85,7 +85,7 @@ const FlipUnit: FC<FlipUnitProps> = memo(function FlipUnit({
         className={cn(
           commonCardStyle,
           "z-20 origin-bottom backface-hidden rounded-t-lg",
-          flipping && "animate-flip-top"
+          flipping && "animate-flip-top",
         )}
       >
         <DigitSpan position="top">{prevDigit}</DigitSpan>
@@ -96,7 +96,7 @@ const FlipUnit: FC<FlipUnitProps> = memo(function FlipUnit({
         className={cn(
           commonCardStyle,
           "z-10 origin-top backface-hidden rounded-b-lg translate-y-full",
-          flipping && "animate-flip-bottom"
+          flipping && "animate-flip-bottom",
         )}
         style={{ transform: "rotateX(90deg)" }}
       >
@@ -120,12 +120,12 @@ function DigitSpan({ children, position }: DigitSpanProps) {
       className={cn(
         "absolute left-0 right-0 w-full flex items-center justify-center",
         // The span should be the full height of the PARENT FlipUnit (200% of the half-card)
-        "h-[200%]"
+        "h-[200%]",
       )}
       style={{
         // If it's the top half, align the full span to the top
         // If it's the bottom half, shift the full span up so its bottom half shows
-        top: position === "top" ? "0%" : "-100%"
+        top: position === "top" ? "0%" : "-100%",
       }}
     >
       {children}
@@ -141,21 +141,21 @@ const flipClockVariants = cva(
         sm: "text-3xl space-x-1",
         md: "text-5xl space-x-2",
         lg: "text-6xl space-x-2",
-        xl: "text-8xl space-x-3"
+        xl: "text-8xl space-x-3",
       },
       variant: {
         default: "",
         secondary: "",
         destructive: "",
         outline: "",
-        muted: ""
-      }
+        muted: "",
+      },
     },
     defaultVariants: {
       size: "md",
-      variant: "default"
-    }
-  }
+      variant: "default",
+    },
+  },
 );
 
 interface FlipClockProps
@@ -182,7 +182,7 @@ const heightMap: Record<FlipClockSize, string> = {
   sm: "text-4xl",
   md: "text-5xl",
   lg: "text-6xl",
-  xl: "text-8xl"
+  xl: "text-8xl",
 };
 
 function ClockSeparator({ size }: { size?: FlipClockSize }) {
@@ -190,7 +190,7 @@ function ClockSeparator({ size }: { size?: FlipClockSize }) {
     <span
       className={cn(
         "text-center -translate-y-[8%]",
-        size ? heightMap[size] : heightMap["md"]
+        size ? heightMap[size] : heightMap["md"],
       )}
     >
       :
@@ -344,7 +344,7 @@ function getTime(countdown: boolean, targetDate?: Date): TimeLeft {
       days: 0,
       hours: now.getHours(),
       minutes: now.getMinutes(),
-      seconds: now.getSeconds()
+      seconds: now.getSeconds(),
     };
   }
 
@@ -356,6 +356,6 @@ function getTime(countdown: boolean, targetDate?: Date): TimeLeft {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
     hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
     minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60)
+    seconds: Math.floor((diff / 1000) % 60),
   };
 }
