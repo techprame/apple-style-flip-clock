@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <div className="relative border-4 px-5 py-10 rounded-2xl bg-black">
-        <FlipClock variant={"destructive"} size="xl" />
+        <FlipClock size="xl" />
 
         <div className="absolute my-3 right-6 text-sm text-zinc-200 dark:text-zinc-300">
           {formattedDate}
